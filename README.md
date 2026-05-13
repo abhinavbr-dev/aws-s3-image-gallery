@@ -55,8 +55,185 @@ User → Browser → EC2 Apache Server → AWS S3 Bucket
 ```bash
 project-folder/
 │
-├── upload.html
-├── gallery.html
-├── style.css
-├── script.js
+├── documentation/
+│   └── Image gallery report.pdf
+│
+├── screenshots/
+│   ├── Screenshot (14).png
+│   └── Screenshot (40).png
+│
+├── source-code/
+│   ├── gallery/
+│   │   └── gallery.html
+│   │
+│   └── image-upload/
+│       └── image_upload.html
+│
 └── README.md
+```
+
+---
+
+# AWS Services Used
+
+## Amazon EC2
+Used for hosting the website using an Ubuntu-based virtual server.
+
+## Amazon S3
+Used for storing uploaded images securely in cloud storage.
+
+## AWS Cognito / IAM
+Used for authentication and secure access to AWS resources.
+
+---
+
+# Setup Instructions
+
+## 1. Create an S3 Bucket
+
+- Open AWS S3 Console
+- Create a new bucket
+- Enable public access if required
+- Add bucket policy for image access
+
+---
+
+## 2. Configure AWS Credentials
+
+Replace the following values in the HTML files:
+
+```javascript
+AWS.config.region = 'your-region';
+
+IdentityPoolId: 'YOUR_IDENTITY_POOL_ID'
+
+const bucketName = 'your-bucket-name';
+```
+
+Example:
+
+```javascript
+AWS.config.region = 'ap-south-1';
+
+IdentityPoolId: 'ap-south-1:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+
+const bucketName = 'my-gallery-bucket';
+```
+
+---
+
+## 3. Install Apache on EC2
+
+```bash
+sudo apt update
+sudo apt install apache2 -y
+```
+
+---
+
+## 4. Move Project Files
+
+```bash
+sudo cp -r project-folder/* /var/www/html/
+```
+
+---
+
+## 5. Restart Apache
+
+```bash
+sudo systemctl restart apache2
+```
+
+---
+
+# Running the Project
+
+Open the browser and visit:
+
+```bash
+http://YOUR_PUBLIC_IP/
+```
+
+Gallery Page:
+
+```bash
+http://YOUR_PUBLIC_IP/source-code/gallery/gallery.html
+```
+
+Upload Page:
+
+```bash
+http://YOUR_PUBLIC_IP/source-code/image-upload/image_upload.html
+```
+
+---
+
+# Challenges Faced
+
+- Configuring S3 bucket permissions
+- Managing CORS policies
+- Handling public image access
+- AWS authentication setup
+- Dynamic image rendering
+
+---
+
+# Learning Outcomes
+
+Through this project, practical experience was gained in:
+- Cloud computing
+- AWS infrastructure
+- Web hosting
+- Apache server configuration
+- S3 bucket management
+- Front-end web development
+- Dynamic JavaScript integration
+
+---
+
+# Screenshots
+
+## Upload Interface
+
+![Upload Page](screenshots/Screenshot%20(14).png)
+
+## Gallery Interface
+
+![Gallery Page](screenshots/Screenshot%20(40).png)
+
+---
+
+# Documentation
+
+The complete project report is available inside the `documentation` folder.
+
+```bash
+documentation/Image gallery report.pdf
+```
+
+---
+
+# Future Enhancements
+
+- User authentication system
+- Database integration
+- Image categories and tags
+- Admin dashboard
+- Drag-and-drop uploads
+- Image compression and optimization
+- Search functionality
+
+---
+
+# Author
+
+**Abhinav BR**  
+BCA Student  
+Cloud & Web Development Project
+
+---
+
+# License
+
+This project is developed for educational and internship purposes.
