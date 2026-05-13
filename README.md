@@ -229,7 +229,7 @@ documentation/Image gallery report.pdf
 # Author
 
 **Abhinav BR**  
-BCA Student  
+MCA Student  
 Cloud & Web Development Project
 
 ---
